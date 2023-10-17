@@ -1,0 +1,38 @@
+*[class~="hover-animation:shake"] {
+  @keyframes shake {
+    0% {
+      transform: translateX(-2px);
+    }
+    25% {
+      transform: translateX(2px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    75% {
+      transform: translateX(-2px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  &:hover {
+    animation: 200ms ease shake forwards;
+  }
+}
+
+*[class~="hover-animation:rotate"] {
+  @keyframes rotate {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(90deg);
+    }
+  }
+
+  &:hover {
+    animation: 200ms ease-out rotate;
+  }
+}
