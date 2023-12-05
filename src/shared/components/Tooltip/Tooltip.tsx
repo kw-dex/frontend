@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback, useRef, useState } from "react"
+import React, { CSSProperties, useCallback, useEffect, useRef, useState } from "react"
 import { classNames } from "@knownout/lib"
 import { createPortal } from "react-dom"
 import "./Tooltip.scss"
@@ -25,20 +25,20 @@ function TooltipElement(props: TooltipElementProps) {
   return createPortal(
     (
       <div
-        className={classNames("tooltip-element", {
+        className={ classNames("tooltip-element", {
           show: props.x && props.y && props.show,
           bottom: props.cursorBottom
-        })}
-        style={{ left: props.x, top: props.y }}
-        ref={props.elementRef}
+        }) }
+        style={ { left: props.x, top: props.y } }
+        ref={ props.elementRef }
       >
-        {typeof props.content === "string"
+        { typeof props.content === "string"
           ? t(props.content)
           : props.content.map((item, key) => (
-            <div className={classNames("tooltip__text__component", item.type)} key={key}>
-              {t(item.message)}
+            <div className={ classNames("tooltip__text__component", item.type) } key={ key }>
+              { t(item.message) }
             </div>
-          ))}
+          )) }
       </div>
     ),
     document.body
@@ -92,25 +92,42 @@ export default function Tooltip(props: Props) {
     setShow(false)
   }, [])
 
+  useEffect(() => {
+    window.addEventListener("wheel", handleMouseOut)
+
+    return () => {
+      handleMouseOut()
+      window.removeEventListener("wheel", handleMouseOut)
+    }
+  }, [])
+
   if (!props.content) return props.children
 
   return (
     <div
       className="tooltip"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-      ref={ref}
+      onMouseOver={ event => {
+        event.stopPropagation()
+        event.preventDefault()
+        handleMouseOver()
+      } }
+      onMouseOut={ event => {
+        event.stopPropagation()
+        event.preventDefault()
+        handleMouseOut()
+      } }
+      ref={ ref }
     >
       <TooltipElement
-        content={props.content}
-        x={position[0]}
-        y={position[1]}
-        show={show}
-        elementRef={elementRef}
-        cursorBottom={position[2]}
+        content={ props.content }
+        x={ position[0] }
+        y={ position[1] }
+        show={ show }
+        elementRef={ elementRef }
+        cursorBottom={ position[2] }
       />
 
-      {props.children}
+      { props.children }
     </div>
   )
 }

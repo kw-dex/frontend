@@ -1,15 +1,26 @@
 .wrapper.input {
-  border-radius: 8px;
-  border: 1px solid var(--strokeFirstColor);
-  background: var(--whiteSecondColor);
+  background: var(--white10);
+  color: var(--white);
 
-  transition: var(--buttonTransition);
+  transition: var(--transitionDefault);
   overflow: hidden;
 
   &__internal {
     width: 100%;
     min-height: 42px;
     height: 100%;
+  }
+
+  div.icon {
+    margin-left: 18px;
+    opacity: 0.4;
+    transition: var(--transitionDefault);
+  }
+
+  &:focus-within {
+    div.icon {
+      opacity: 0.9;
+    }
   }
 
   input {
@@ -20,16 +31,19 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    padding: 0 10px;
+    padding: 18px;
+
+    color: var(--white);
   }
 
   .input__clear {
     position: relative;
-    padding: 0 10px;
-    color: var(--greenFirstColor);
+    padding: 0 18px;
+    color: var(--white75);
     cursor: pointer;
-    opacity: .65;
-    transition: var(--buttonTransition);
+    opacity: .5;
+    transition: var(--transitionDefault);
+    font-size: 14px;
 
     &:hover {
       opacity: 1;

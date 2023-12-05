@@ -1,19 +1,15 @@
 import useOverridableState, { StateOverride } from "@/shared/hooks/use-overridable-state"
 import Wrapper, { WrapperVariant } from "@/shared/components/Wrapper"
-import React, { CSSProperties, useCallback } from "react"
+import React, { CSSProperties, JSX, useCallback } from "react"
 import { classNames } from "@knownout/lib"
 import "./Input.scss"
 import { Text } from "@/shared/components/Typography"
 import { LargeTextType, TextScale } from "@/shared/components/Typography/typography-types"
-
-export enum InputVariant {
-  Default = "default",
-  Inline = "inline"
-}
+import Icon, { IconSize } from "@/shared/components/Icon"
 
 interface Props {
-  width: "fit-content" | `${string}%` | `${string}em` | number
-  height?: "fit-content" | `${string}%` | `${string}em` | number
+  width: "fit-content" | `${ string }%` | `${ string }em` | number
+  height?: "fit-content" | `${ string }%` | `${ string }em` | number
 
   style?: CSSProperties
 
@@ -23,13 +19,14 @@ interface Props {
 
   replacePattern?: RegExp
   maxLength?: number
+
   attachedElement?: JSX.Element
   hideClearButton?: boolean
 
   placeholder?: string
   readOnly?: boolean
 
-  variant?: InputVariant
+  icon?: JSX.Element
 
   preProcess?(value: string): string
 
@@ -54,47 +51,51 @@ export default function Input(props: Props) {
 
   return (
     <Wrapper
-      variant={WrapperVariant.FlexInlineLeft}
-      className={classNames("input", {
+      variant={ WrapperVariant.FlexInlineLeft }
+      className={ classNames("input", {
         invalid: props.invalid,
         disabled: props.disabled
-      }, props.variant)}
-      gap={10}
-      style={{
+      }) }
+      gap={ 10 }
+      style={ {
         width: props.width,
         height: props.height,
         ...props.style
-      }}
+      } }
     >
-      <Wrapper variant={WrapperVariant.FlexInlineLeft} fullWidth className="input__internal">
+      <Wrapper variant={ WrapperVariant.FlexInlineLeft } fullWidth className="input__internal">
+        { props.icon && (
+          <Icon size={ IconSize.x24 } icon={ props.icon } />
+        ) }
+
         <input
           type="text"
-          onChange={handleChange}
-          value={value}
-          maxLength={props.maxLength}
-          placeholder={props.placeholder}
-          readOnly={props.readOnly}
-          onFocus={props.onFocus}
-          onBlur={props.onBlur}
+          onChange={ handleChange }
+          value={ value }
+          maxLength={ props.maxLength }
+          placeholder={ props.placeholder }
+          readOnly={ props.readOnly }
+          onFocus={ props.onFocus }
+          onBlur={ props.onBlur }
         />
-        {props.hideClearButton !== true && !props.attachedElement && value.length > 0 && (
+        { props.hideClearButton !== true && !props.attachedElement && value.length > 0 && (
           <Text<TextScale.Default>
-            textScale={TextScale.Default}
-            textType={LargeTextType.Default}
+            textScale={ TextScale.Default }
+            textType={ LargeTextType.Default }
             className="input__clear"
-            onClick={() => setValue("")}
-            style={{ width: "fit-content" }}
+            onClick={ () => setValue("") }
+            style={ { width: "fit-content" } }
           >
             Clear
           </Text>
-        )}
+        ) }
       </Wrapper>
 
-      {props.attachedElement && (
-        <Wrapper variant={WrapperVariant.FlexColumnLeft} className="input__attached">
-          {props.attachedElement}
+      { props.attachedElement && (
+        <Wrapper variant={ WrapperVariant.FlexColumnLeft } className="input__attached">
+          { props.attachedElement }
         </Wrapper>
-      )}
+      ) }
     </Wrapper>
   )
 }

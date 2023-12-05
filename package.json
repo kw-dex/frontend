@@ -7,7 +7,8 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=production --node-env=development",
     "watch": "webpack --watch",
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "typechain": "npx typechain --target ethers-v5 --out-dir ./src/app/abis/types './src/app/abis/*ABI.json'"
   },
   "keywords": [
     "crypto",
@@ -63,6 +64,7 @@
     "@knownout/lib": "^0.1.3",
     "@opendapps/modal-window": "^0.0.4",
     "@swc/core": "^1.3.7",
+    "@typechain/ethers-v5": "^11.1.2",
     "@types/node": "^18.16.0",
     "@types/react": "^18.0.21",
     "@types/react-blockies": "^1.4.1",

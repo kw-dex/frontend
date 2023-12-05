@@ -11,7 +11,7 @@ html, body {
 }
 
 * {
-  font-weight: 500;
+  font-weight: 400;
   outline: none;
   -webkit-tap-highlight-color: transparent;
 
@@ -23,9 +23,85 @@ html, body {
 
   overflow: hidden;
   overflow-y: auto;
+
+  background: var(--dark);
+  //color: var(--white);
 }
 
-// Color schema
+:root {
+  // White
+  --white: white;
+  --white50: rgba(255, 255, 255, 50%);
+  --white90: rgba(255, 255, 255, 90%);
+  --white75: rgba(255, 255, 255, 75%);
+  --white15: rgba(255, 255, 255, 15%);
+  --white10: rgba(255, 255, 255, 10%);
+  --white5: rgba(255, 255, 255, 5%);
+
+  // Yellow
+  --yellow: #F0B90B;
+  --yellowHover: #ffd96d;
+  --yellow10: rgba(240, 185, 11, 10%);
+  --yellow20: rgba(240, 185, 11, 20%);
+
+  // Green
+  --green: #53AE94;
+  --green50: rgba(83, 174, 148, 50%);
+  --green15: rgba(83, 174, 148, 15%);
+
+  // Blue
+  --blue: #2775CA;
+  --blue50: rgba(39, 117, 202, 50%);
+  --blue15: rgba(39, 117, 202, 15%);
+
+  // Red
+  --red: #FF5151;
+  --red10: rgba(255, 81, 81, 10%);
+
+  --black: black;
+  --dark: #111111;
+
+  // Values
+  --transitionDefault: 200ms ease all;
+}
+
+// Color schemas
+*[class~="color:white"] { color: var(--white) }
+
+*[class~="color:white90"] { color: var(--white90) }
+
+*[class~="color:white75"] { color: var(--white75) }
+
+*[class~="color:white50"] { color: var(--white50) }
+
+*[class~="color:white15"] { color: var(--white15) }
+
+*[class~="color:white10"] { color: var(--white10) }
+
+*[class~="color:white5"] { color: var(--white5) }
+
+*[class~="color:yellow"] { color: var(--yellow) }
+
+*[class~="color:yellow10"] { color: var(--yellow10) }
+
+*[class~="color:yellow20"] { color: var(--yellow20) }
+
+*[class~="color:green"] { color: var(--green) }
+
+*[class~="color:green50"] { color: var(--green50) }
+
+*[class~="color:green15"] { color: var(--green15) }
+
+*[class~="color:blue"] { color: var(--blue) }
+
+*[class~="color:blue50"] { color: var(--blue50) }
+
+*[class~="color:blue15"] { color: var(--blue15) }
+
+*[class~="color:red"] { color: var(--red) }
+
+*[class~="color:red10"] { color: var(--red10) }
+
 
 body {
   --white: white;

@@ -1,0 +1,100 @@
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 18px;
+  background-color: var(--yellow);
+  font-size: 16px;
+
+  cursor: pointer;
+  border: none;
+
+  transition: var(--transitionDefault);
+
+  gap: 8px;
+
+  &.default {
+    color: var(--black) !important;
+  }
+
+  span.typography-text, div.icon {
+    //transition: var(--transitionDefault);
+    padding: 0;
+    background: transparent;
+  }
+
+  & > div, & > span {
+    pointer-events: none;
+  }
+
+  &:hover, &.active {
+    background: var(--yellowHover);
+    color: var(--black);
+  }
+
+  div.loader {
+    position: absolute;
+    margin: auto;
+
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+
+    transition: var(--transitionDefault);
+  }
+
+  &.loading {
+    cursor: not-allowed;
+    background: var(--yellow);
+
+    span.typography-text, div.icon {
+      opacity: 0;
+      transform: scale(0.5, 0.5);
+    }
+
+    div.loader {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+
+  &.default {
+    color: var(--white);
+  }
+
+  &.transparent-yellow {
+    background: var(--yellow10);
+    color: var(--yellow);
+
+    &:hover, &.loading, &.active {
+      background: var(--yellow);
+      color: var(--black);
+    }
+  }
+
+  &.transparent-red {
+    background: var(--red10);
+    color: var(--red);
+
+    &:hover, &.loading, &.active {
+      background: var(--red);
+      color: var(--white);
+    }
+  }
+
+  &.monochrome {
+    background: var(--white5);
+    color: var(--white75);
+
+    &:hover, &.loading, &.active {
+      background: var(--white10);
+      color: var(--white90);
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}

@@ -37,7 +37,19 @@ declare global {
     stableCoin?: boolean
   }
 
-  type EthereumLikeAddress = `0x${string}`
-
   type ArrayElement<ArrayType> = ArrayType extends readonly (infer ElementType)[] ? ElementType : never
+
+  namespace Color {
+    export type White = "white" | "white90" | "white75" | "white50" | "white15" | "white10" | "white5"
+
+    export type Yellow = "yellow" | "yellow20" | "yellow10"
+
+    export type Green = "green" | "green15" | "green50"
+
+    export type Blue = "blue" | "blue15" | "blue50"
+
+    export type Red = "red" | "red10"
+  }
+
+  type AnyColor = Color.White & Color.Yellow & Color.Green & Color.Blue & Color.Red
 }

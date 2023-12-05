@@ -1,7 +1,7 @@
 import Tokens from "@/app/configs/tokens"
 import assetAddress from "@/shared/utils/asset-address"
 
-export default function tokensList(chainId: ChainId) {
+export default function tokensList(chainId: ChainId = 97) {
   const resulting = Tokens[chainId] ?? []
   const _array: Erc20Token[] = []
 
