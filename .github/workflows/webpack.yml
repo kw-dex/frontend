@@ -11,6 +11,9 @@ jobs:
     runs-on: self-hosted
     env:
       ENV_FILE: ${{ vars.MASTER_ENV_FILE }}
+      USER: github-runner
+      HOST:  ${{ vars.HOST }}
+      PROJECT_PATH: /var/www/kw-dex
 
     strategy:
       matrix:
@@ -32,6 +35,5 @@ jobs:
         npm install
         npm run typechain
         npm run build
-    - name: Move to server
-      run: |
-        mv -f ./dist/* /var/www/kw-dex
+    - name: Deploy static build to server
+      run: rsync -ar --delete-after ./dist/ ${USER?}@${HOST?}:${PROJECT_PATH?}/
