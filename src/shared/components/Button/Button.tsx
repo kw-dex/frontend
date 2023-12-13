@@ -30,6 +30,8 @@ export interface ButtonProps {
 
   active?: boolean
 
+  loaderInvert?: boolean
+
   onClick?(): any | Promise<any>
 }
 
@@ -61,7 +63,7 @@ export default function Button(props: ButtonProps) {
         ...props.style
       } }
     >
-      <Loader />
+      <Loader invert={ props.loaderInvert } />
 
       { props.icon && (
         <Icon size={ IconSize.x24 } icon={ props.icon } />

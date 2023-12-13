@@ -6,7 +6,7 @@ const Tokens: { [key: number]: Erc20Token[] } = {
       symbol: "tBNB",
       address: Constants.zeroAddress,
       decimals: 18,
-      icon: "binance.png",
+      icon: "/chains/bnb.png",
       name: "BNB",
       chainId: 97,
       currentBlockchainNative: true,
@@ -16,7 +16,7 @@ const Tokens: { [key: number]: Erc20Token[] } = {
       symbol: "twBNB",
       address: "0x4d63CfAcd60eA397B7a17BD2A3a26F4EE6Fc3De3",
       decimals: 18,
-      icon: "binance.png",
+      icon: "/chains/bnb.png",
       name: "Wrapped BNB",
       chainId: 97,
       nativeCoin: true

@@ -52,4 +52,14 @@ declare global {
   }
 
   type AnyColor = Color.White & Color.Yellow & Color.Green & Color.Blue & Color.Red
+
+  interface Pool {
+    token0: Erc20Token
+    token1: Erc20Token
+
+    feePercent: number
+    address: string
+  }
+
+
 }

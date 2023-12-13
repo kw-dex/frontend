@@ -23,6 +23,7 @@
 
   &.scale-small {
     font-size: 14px;
+    opacity: 0.75;
 
     &.default {
       line-height: 140%;
@@ -70,6 +71,7 @@
 .typography-caption {
   all: unset;
   color: inherit;
+  opacity: 0.5;
 
   &.medium, &.medium-bold {
     font-size: 12px;
